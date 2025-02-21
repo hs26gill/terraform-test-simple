@@ -23,3 +23,7 @@ resource "random_id" "this" {
 output "random_name" {
   value = var.random_name
 }
+
+output "random_id_count" {
+  value = var.random_id_count
+}
