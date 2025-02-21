@@ -1,17 +1,17 @@
 terraform {
   required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      configuration_aliases = [
-        aws.backup,
-        aws.prod
-      ]
+    random = {
+      source = "hashicorp/random"
+      version = "3.6.3"
     }
   }
 }
 
-resource "null_resource" "test" {}
+variable "random_id_count" {
+  type    = number
+}
 
-resource "null_resource" "test_3" {}
-
-resource "null_resource" "test_2" {} 
+resource "random_id" "this" {
+  count       = var.random_id_count
+  byte_length = 16
+}
